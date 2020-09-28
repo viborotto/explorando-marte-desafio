@@ -23,6 +23,8 @@ public class Sonda {
 
     private String instrucoes;
 
+    private String descricao;
+
     public Sonda() {
     }
 
@@ -72,5 +74,13 @@ public class Sonda {
 
     public void setInstrucoes(String instrucoes) {
         this.instrucoes = instrucoes;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }
