@@ -22,7 +22,6 @@ public class SondaServiceImpl implements SondaService{
 
 
             for (int j = 0; j < sonda.getInstrucoes().length(); j++){
-                int tamanho = sonda.getInstrucoes().length();
                 String step = sonda.getInstrucoes().substring(j,j+1);
 
                 if (step.equals("L")){
@@ -35,7 +34,7 @@ public class SondaServiceImpl implements SondaService{
                 }
             }
 
-            System.out.println("Exploracao finalizada em ("+ sonda.getCoordenadaX() + "," + sonda.getCoordenadaY() + "), direcao " + sonda.getDirecao());
+            System.out.println("Exploracao finalizada da sonda "+ sonda.getNome() + " em ("+ sonda.getCoordenadaX() + "," + sonda.getCoordenadaY() + "), direcao " + sonda.getDirecao());
 
         }
 

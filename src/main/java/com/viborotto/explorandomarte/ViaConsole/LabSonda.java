@@ -1,4 +1,4 @@
-package com.viborotto.explorandomarte;
+package com.viborotto.explorandomarte.ViaConsole;
 
 import java.util.Scanner;
 
