@@ -7,25 +7,36 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Api(value = "Sondas Endpoints")
-@RestController
-@RequestMapping(value = "/api/v1")
+@Controller
 public class SondaController {
 
     @Autowired
     private SondaService sondaService;
 
+    //todo precisa de id? DTO? descricao da sonda ao retornar o objeto no post e na listagem
     @ApiOperation(value = "Criar uma Sonda e enviar pra Marte" )
-    @PostMapping("/sondas/{id}")
-    public ResponseEntity<?> criarSonda(@RequestBody Sonda sonda, @PathVariable int id){
-        return ResponseEntity.status(HttpStatus.CREATED).body(sondaService.criarSonda(sonda, id));
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(method=RequestMethod.POST, value="/novaSonda")
+    public String criarSonda(@RequestBody Sonda sonda, Model model){
+        sondaService.criarSonda(sonda);
+        model.addAttribute("sondas", sondaService.listarSondas());
+        return "redirect:/index";
     }
 
     @ApiOperation(value = "Listar sondas em Marte" )
-    @GetMapping("/sondas")
-    public ResponseEntity<?> listarSonda(){
-        return ResponseEntity.status(HttpStatus.OK).body(sondaService.listarSondas());
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(method=RequestMethod.GET, value="/api/v1/sondas")
+    public String listarSonda(Model model){
+        List<Sonda> listaSondas = sondaService.listarSondas();
+
+        model.addAttribute("listaSondas", listaSondas);
+        return "index";
     }
 }

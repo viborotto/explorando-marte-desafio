@@ -9,7 +9,7 @@ public interface SondaService {
 
     List<Sonda> listarSondas();
 
-    Sonda criarSonda(Sonda sonda, int quantidadeDeSondasParaEnvio);
+    Sonda criarSonda(Sonda sonda);
 
 //    Sonda getSonda(Long id);
 //    Sonda atualizarSonda(Long id, Sonda banda);

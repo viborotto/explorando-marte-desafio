@@ -16,9 +16,9 @@ public class SondaServiceImpl implements SondaService{
     private SondaRepository sondaRepository;
 
     @Override
-    public Sonda criarSonda(Sonda sonda, int quantidadeDeSondasParaEnvio) {
+    public Sonda criarSonda(Sonda sonda) {
 
-        for (int i = 1; i <= quantidadeDeSondasParaEnvio; i++){
+//        for (int i = 1; i <= quantidadeDeSondasParaEnvio; i++){
 
 
             for (int j = 0; j < sonda.getInstrucoes().length(); j++){
@@ -36,7 +36,7 @@ public class SondaServiceImpl implements SondaService{
 
             System.out.println("Exploracao finalizada da sonda "+ sonda.getNome() + " em ("+ sonda.getCoordenadaX() + "," + sonda.getCoordenadaY() + "), direcao " + sonda.getDirecao());
 
-        }
+//        }
 
         return sondaRepository.save(sonda);
     }
