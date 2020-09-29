@@ -32,7 +32,7 @@
         }
 
         body {
-            background: white;
+            background-image: url("../resources/space.jpg");
             color: #333;
         }
         .container-fluid {
@@ -93,11 +93,13 @@
 <!--                </td>-->
             </tbody>
         </table>
-        <form class="needs-validation" novalidate action="#" th:action="@{/novaSonda}" th:object="${sonda}" method="post">
+        <!--/*@thymesVar id="sondas" type="java.util.List"*/-->
+        <!--/*@thymesVar id="sonda" type="com.viborotto.explorandomarte.model.Sonda"*/-->
+        <form class="needs-validation" novalidate action="#" method="POST" th:action="@{/}" modelAttribute="sonda" th:object="${sonda}" >
             <div class="form-row">
                 <div class="col">
                     <label for="validationCustom01">Nome</label>
-                    <input type="text" th:field="*{nome}" class="form-control" id="validationCustom01" placeholder="Nome da sonda" required>
+                    <input th:field="*{nome}" type="text" class="form-control" id="validationCustom01" placeholder="Nome da sonda" required>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
@@ -106,26 +108,26 @@
             <div class="form-row">
                 <div class="col-md-6 mb-3">
                     <label for="validationCustom03">Coordenada X</label>
-                    <input type="number" th:field="*{coordenadaX}" class="form-control" id="validationCustom03" placeholder="Coordenada X de chegada em Marte" required>
+                    <input th:field="*{coordenadaX}" type="text" class="form-control" id="validationCustom03" placeholder="Coordenada X de chegada em Marte" required>
                     <div class="invalid-feedback">
                         Please provide a valid city.
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="validationCustom03">Coordenada Y</label>
-                    <input type="number" th:field="*{coordenadaY}" class="form-control" id="validationCustom04" placeholder="Coordenada Y de chegada em Marte" required>
+                    <input th:field="*{coordenadaY}" type="text" class="form-control" id="validationCustom04" placeholder="Coordenada Y de chegada em Marte" required>
                     <div class="invalid-feedback">
                         Por favor valide a coordenada Y
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="validationCustom04">Direção Inicial da Sonda</label>
-                    <select class="custom-select" id="validationCustom05" required>
+                    <select class="custom-select" id="validationCustom05" th:field="*{direcao}" required>
                         <option selected disabled value="">Escolha a Direcao...</option>
-                        <option value="W">Oeste</option>
-                        <option value="N">Norte</option>
-                        <option value="E">Leste</option>
-                        <option value="S">Sul</option>
+                        <option value="W">W</option>
+                        <option value="N">N</option>
+                        <option value="E">E</option>
+                        <option value="S">S</option>
                     </select>
                     <div class="invalid-feedback">
                         Por favor selecione uma Direção
@@ -139,7 +141,8 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-secondary btn-lg btn-block" type="submit" style="background-color: #fd4755; color: white">Enviar Nova Sonda</button>
+            <button th:href="@{/}" class="btn btn-secondary btn-lg btn-block" type="submit" style="background-color: #fd4755; color: #ffffff">Enviar Nova Sonda</button>
+            <br>
         </form>
 
         <script>
