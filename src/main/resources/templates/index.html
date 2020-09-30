@@ -32,7 +32,7 @@
         }
 
         body {
-            background-image: url("../resources/space.jpg");
+            background: url("../static/space.jpg");
             color: #333;
         }
         .container-fluid {
@@ -65,7 +65,7 @@
         </nav>
     </div>
 
-    <div class="container" style="margin-top: 20px;">
+    <div class="container" style="margin-top: 20px; background: url('../static/space.jpg');">
         <table class="table">
             <thead class="thead-dark" style="background-color: #333333; color: white; border-radius: 30px">
             <tr>
@@ -75,6 +75,7 @@
                 <th scope="col">Coordenada Y</th>
                 <th scope="col">Direção</th>
                 <th scope="col">Instruçōes</th>
+                <th scope="col">Comandos</th>
             </tr>
             </thead>
             <tbody>
@@ -85,17 +86,15 @@
                 <td th:text="${sonda.coordenadaY}"></td>
                 <td th:text="${sonda.direcao}"></td>
                 <td th:text="${sonda.instrucoes}"></td>
+                <td>
+                    <a th:href="@{/deleteSonda/{id}(id=${sonda.id})}" class="btn btn-ligth" style="background-color: #ff4329; color: white; font-weight: lighter;">Retornar pra Terra</a>
+                </td>
             </tr>
-<!--                <td>-->
-<!--                    <a th:href="@{'edit/' + ${cartorio.id}}">Editar</a>-->
-<!--                    &nbsp;&nbsp;&nbsp;&nbsp;-->
-<!--                    <a th:href="@{'delete/' + ${cartorio.id}}">Deletar</a>-->
-<!--                </td>-->
             </tbody>
         </table>
         <!--/*@thymesVar id="sondas" type="java.util.List"*/-->
         <!--/*@thymesVar id="sonda" type="com.viborotto.explorandomarte.model.Sonda"*/-->
-        <form class="needs-validation" novalidate action="#" method="POST" th:action="@{/}" modelAttribute="sonda" th:object="${sonda}" >
+        <form class="needs-validation" novalidate action="#" method="POST" th:action="@{/savedSonda}" modelAttribute="sonda" th:object="${sonda}" >
             <div class="form-row">
                 <div class="col">
                     <label for="validationCustom01">Nome</label>
@@ -141,7 +140,7 @@
                     </div>
                 </div>
             </div>
-            <button th:href="@{/}" class="btn btn-secondary btn-lg btn-block" type="submit" style="background-color: #fd4755; color: #ffffff">Enviar Nova Sonda</button>
+            <button th:href="@{/api/v1/sondas}" class="btn btn-secondary btn-lg btn-block" type="submit" style="background-color: #fd4755; color: #ffffff">Enviar Nova Sonda</button>
             <br>
         </form>
 

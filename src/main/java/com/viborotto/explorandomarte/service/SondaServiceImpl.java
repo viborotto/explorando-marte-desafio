@@ -45,6 +45,10 @@ public class SondaServiceImpl implements SondaService{
     public List<Sonda> listarSondas() {
         return (List<Sonda>) sondaRepository.findAll();
     }
+    @Override
+    public void deletarSonda(Long id) {
+        this.sondaRepository.deleteById(id);
+    }
 
         public void giraParaEsquerda(Sonda sonda, String vetor[]){
         // W N E S

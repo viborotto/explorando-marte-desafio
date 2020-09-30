@@ -13,6 +13,6 @@ public interface SondaService {
 
 //    Sonda getSonda(Long id);
 //    Sonda atualizarSonda(Long id, Sonda banda);
-//    void deletarSonda(Long id);
+    void deletarSonda(Long id);
 
 }
