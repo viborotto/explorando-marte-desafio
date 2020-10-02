@@ -1,4 +1,4 @@
-# explorando-marte-desafio
+# Explorando Marte Desafio
 Desafio em que a API cria Sondas para marte com suas coordenadas e movimentos
 
 ## Tecnologias utilizadas
@@ -10,8 +10,9 @@ Desafio em que a API cria Sondas para marte com suas coordenadas e movimentos
    - Documentado com Swagger: http://localhost:8080/swagger-ui.html
    - Docker
    - (Testes)
+   - Nivel 2 de maturidade REST
 
-## Entendendo o Problema Resolvido:
+## Entendendo o Problema a ser Resolvido:
 
 Um conjunto de sondas foi enviado pela NASA à Marte e irá pousar num planalto.
 Esse planalto, que curiosamente é retangular, deve ser explorado pelas sondas para que suas câmera embutidas consigam ter uma visão completa da área e enviar as imagens de volta para a Terra.
@@ -29,6 +30,10 @@ Nesta malha o ponto ao norte de (x,y) é sempre (x, y+1).
 Programa que processa uma série de instruções enviadas para as sondas que estão explorando este planalto.
 O formato da entrada e saída deste programa segue abaixo.
 
+## Servico Via FrontEnd - Thymeleaf
+[gif]
+
+    
 
 ## Contrato API
 
@@ -39,7 +44,10 @@ O resto da entrada será informação das sondas que foram implantadas. Cada son
 A posição é representada por dois inteiros e uma letra separados por espaços, correpondendo à coordenada X-Y e à direção da sonda.
 Cada sonda será controlada sequencialmente, o que quer dizer que a segunda sonda só irá se movimentar após que a primeira tenha terminado suas instruções.
 
-### POST - Criando/Enviando a Sonda
+endereco para acessar front: localhost:8080/api/v1/sondas
+
+### POST - Criando/Enviando a Sonda - /salvarSonda
+
 ```json
 {
     "nome": "sonda_nasa",
@@ -65,16 +73,7 @@ calculando a posicao final(x,y) da sonda apos esses movimentos e direcao.
 }
 ```
 
-### GET - Lista de Sondas enviadas
-```json
-{
-    "nome": "sonda_nasa",
-    "coordenadaX": 1,
-    "coordenadaY": 2,
-    "direcao": "N",
-    "instrucoes": "LMLMLMLMM"
-}
-```
+### GET - Lista de Sondas enviadas - /sondas
 
 #### Retorno - 200: OK
 O retorno consiste em apos o envio de posicao inicial e direcao da sonda, e movimentos realizados em Marte, o servico processa instrucoes(M - mover pra frente, R - girar uma direcao para direita, L - girar uma direcao para esquerda),
@@ -98,6 +97,12 @@ calculando a posicao final(x,y) da sonda apos esses movimentos e direcao.
     }
 ]
 ```
+
+### DELETE - Deletar sonda - /deletarSonda/{id}
+
+#### Retorno - 200: OK
+Deletar uma sonda
+
 
 ### Fora da API, somente execucao da logica, arquivo /ViaConsole/LabSonda.java:
 
