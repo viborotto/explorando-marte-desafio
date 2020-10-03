@@ -1,11 +1,9 @@
 package com.viborotto.explorandomarte.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "sondas")
@@ -15,19 +13,26 @@ public class Sonda {
     @GeneratedValue
     private Long id;
 
+    @NotNull
     private String nome;
 
+    @NotNull
+    @Column(name = "COORDENADAX")
     private Integer coordenadaX;
 
+    @NotNull
+    @Column(name = "COORDENADAY")
     private Integer coordenadaY;
 
+    @NotNull
     private String direcao;
 
+    @NotNull
     @JsonIgnore
     private String instrucoes;
 
-    @JsonIgnore
-    private String descricao;
+//    @JsonIgnore
+//    private String descricao;
 
     public Sonda() {
     }
@@ -78,13 +83,5 @@ public class Sonda {
 
     public void setInstrucoes(String instrucoes) {
         this.instrucoes = instrucoes;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 }

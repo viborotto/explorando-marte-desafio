@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+  mysqldb:
+    restart: always
+    container_name: docker-mysql
+    image: mysql:5.6
+    environment:
+      MYSQL_ROOT_PASSWORD: rootdockerdb
+      MYSQL_USER: root
+      MYSQL_DATABASE: sondas
+    ports:
+      - 3308:3308
+
+
+  explorando-app:
+    restart: on-failure
+    build: ./
+    ports:
+      - 8080:8080
+    environment:
+      WAIT_HOSTS: mysqldb:3306
+    depends_on:
+      - mysqldb

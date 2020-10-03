@@ -34,12 +34,11 @@ public class LabSonda {
            System.out.print("Instrucoes para sonda: ");
            sonda1.setInstrucoes(sc.next());
 
-            //TODO INSTRUCOES;        R L muda a direcao  [W, N, E, S]      |       M muda x e y
+
            for (int j = 0; j < sonda1.getInstrucoes().length(); j++){
                int tamanho = sonda1.getInstrucoes().length();
                String step = sonda1.getInstrucoes().substring(j,j+1);
                if (step.equals("L")){
-                   //TODO funcao que atualiza a direcao conforme o comando L
                    if (sonda1.getDirecao().equalsIgnoreCase("W")){
                        int indice = 0;
                        posicaoGiro = vetor[indice+3];
@@ -100,55 +99,4 @@ public class LabSonda {
 
 
     }
-
-//    public void mudandoDirecaoEsquerda(Sonda sonda){
-//        // W N E S
-//        // 0 1 2 3
-//        String posicaoGiro;
-//        String vetor[] = {"W", "N", "E", "S"};
-//
-//        if (sonda1.getDirecao().equalsIgnoreCase("W")){
-//            int indice = 0;
-//            posicaoGiro = vetor[indice+3];
-//            sonda1.setDirecao(posicaoGiro);
-//        } else if (sonda.getDirecao().equalsIgnoreCase("N")){
-//            int indice = 1;
-//            posicaoGiro = vetor[indice-1];
-//            sonda.setDirecao(posicaoGiro);
-//        } else if (sonda1.getDirecao().equalsIgnoreCase("E")){
-//            int indice = 2;
-//            posicaoGiro = vetor[indice-1];
-//            sonda.setDirecao(posicaoGiro);
-//        } else if (sonda1.getDirecao().equalsIgnoreCase("S")){
-//            int indice = 3;
-//            posicaoGiro = vetor[indice-1];
-//            sonda.setDirecao(posicaoGiro);
-//        }
-//    }
-
-//    public void mudandoDirecaoDireita(Sonda sonda){
-//        // W N E S
-//        // 0 1 2 3
-//        String posicaoGiro;
-//        String vetor[] = {"W", "N", "E", "S"};
-//
-//        if (sonda.getDirecao().equalsIgnoreCase("W")){
-//            int indice = 0;
-//            posicaoGiro = vetor[indice+1];
-//            sonda.setDirecao(posicaoGiro);
-//        } else if (sonda.getDirecao().equalsIgnoreCase("N")){
-//            int indice = 1;
-//            posicaoGiro = vetor[indice+1];
-//            sonda.setDirecao(posicaoGiro);
-//        } else if (sonda.getDirecao().equalsIgnoreCase("E")){
-//            int indice = 2;
-//            posicaoGiro = vetor[indice+1];
-//            sonda.setDirecao(posicaoGiro);
-//        } else if (sonda.getDirecao().equalsIgnoreCase("S")){
-//            int indice = 3;
-//            posicaoGiro = vetor[indice-3];
-//            sonda.setDirecao(posicaoGiro);
-//        }
-//    }
-
 }

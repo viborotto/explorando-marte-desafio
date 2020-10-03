@@ -89,68 +89,10 @@
             </plugin>
             <!-- fabric8 to integrate maven with docker -->
             <plugin>
-                <groupId>io.fabric8</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>0.34.1</version>
-
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
                 <configuration>
-
-                    <!--<dockerHost>http://127.0.0.1:2375</dockerHost>-->
-                    <dockerHost>unix:///var/run/docker.sock</dockerHost>
-
-                    <verbose>true</verbose>
-                    <images>
-                        <image>
-                            <name>{docker.image.prefix}/${docker.image.name}</name>
-                            <build>
-                                <dockerFileDir>${project.basedir}/target/dockerfile/</dockerFileDir>
-
-                                <!--copies artficact to docker build dir in target-->
-                                <assembly>
-                                    <descriptorRef>artifact</descriptorRef>
-                                </assembly>
-                                <tags>
-                                    <tag>latest</tag>
-                                    <tag>${project.version}</tag>
-                                </tags>
-                            </build>
-                            <run>
-                                <ports>
-                                    <port>8080:8080</port>
-                                </ports>
-                                <links>
-                                    <link>mysqldb:mysqldb</link>
-                                </links>
-                                <env>
-                                    <SPRING_DATASOURCE_URL>jdbc:mysql://mysqldb:3306/sondas</SPRING_DATASOURCE_URL>
-                                    <SPRING_PROFILES_ACTIVE>mysql-docker</SPRING_PROFILES_ACTIVE>
-                                </env>
-                                <dependsOn>
-                                    <container>mysql</container>
-                                </dependsOn>
-                            </run>
-                        </image>
-                        <!--mysql container-->
-                        <image>
-                            <name>mysql</name>
-                            <alias>mysqldb</alias>
-                            <run>
-                                <!--expose port for dn-->
-                                <ports>
-                                    <port>3306:3306</port>
-                                </ports>
-                                <!--set env prams for mysql image-->
-                                <env>
-                                    <MYSQL_DATABASE>sondas</MYSQL_DATABASE>
-                                    <MYSQL_ALLOW_EMPTY_PASSWORD>yes</MYSQL_ALLOW_EMPTY_PASSWORD>
-                                </env>
-                                <!--wait for db to start-->
-                                <wait>
-                                    <time>10000</time>
-                                </wait>
-                            </run>
-                        </image>
-                    </images>
+                    <repository>viborotto/${project.artifactId}</repository>
                 </configuration>
             </plugin>
         </plugins>

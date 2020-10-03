@@ -1,6 +1,8 @@
-FROM openjdk
+FROM openjdk:8-jdk-alpine
+RUN addgroup -S devdocker && adduser -S vittoria -G devdocker
+USER vittoria:devdocker
 
+ARG JAR_FILE=target/*.jar
 VOLUME /tmp
-ADD maven/explorando-marte-0.0.1-SNAPSHOT.jar explorando-marte-0.0.1-SNAPSHOT.jar
-RUN sh -c 'touch /explorando-marte-0.0.1-SNAPSHOT'
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/explorando-marte-0.0.1-SNAPSHOT.jar"]
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]

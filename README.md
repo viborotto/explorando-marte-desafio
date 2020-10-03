@@ -68,8 +68,7 @@ calculando a posicao final(x,y) da sonda apos esses movimentos e direcao.
     "nome": "sonda_nasa",
     "coordenadaX": 1,
     "coordenadaY": 3,
-    "direcao": "N",
-    "instrucoes": "LMLMLMLMM"
+    "direcao": "N"
 }
 ```
 
