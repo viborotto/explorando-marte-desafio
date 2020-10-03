@@ -87,6 +87,27 @@ calculando a posicao final(x,y) da sonda apos esses movimentos e direcao.
 }
 ```
 
+### POST - Criando/Enviando a Sonda Que Ultrapasse Limite da Superfície
+
+```json
+{
+    "nome": "sonda_nasa",
+    "tamanhoSuperficieX": 1,
+    "tamanhoSuperficieY": 2,
+    "coordenadaX": 3,
+    "coordenadaY": 3,
+    "direcao": "N",
+    "instrucoes": "LMLMLMLMM"
+}
+```
+
+#### Retorno - 400: BAD REQUEST
+```text
+Limite da superficie a ser explorada foi ultrapassado, tente novamente
+```
+
+
+
 ### GET - Lista de Sondas enviadas - /sondas
 
 #### Retorno - 200: OK
