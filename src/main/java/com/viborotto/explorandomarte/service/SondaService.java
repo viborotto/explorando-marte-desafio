@@ -11,7 +11,7 @@ public interface SondaService {
 
     Sonda criarSonda(Sonda sonda);
 
-//    Sonda getSonda(Long id);
+    Sonda getSonda(Long id);
 //    Sonda atualizarSonda(Long id, Sonda banda);
     void deletarSonda(Long id);
 

@@ -1,16 +1,16 @@
 version: '3.1'
 
 services:
-  mysqldb:
-    restart: always
-    container_name: docker-mysql
-    image: mysql:5.6
-    environment:
-      MYSQL_ROOT_PASSWORD: rootdockerdb
-      MYSQL_USER: root
-      MYSQL_DATABASE: sondas
-    ports:
-      - 3308:3308
+#  mysqldb:
+#    restart: always
+#    container_name: mysqldb
+#    image: mysql:5.6
+#    environment:
+#      - MYSQL_ROOT_PASSWORD= rootdockerdb
+#      - MYSQL_USER= root
+#      - MYSQL_DATABASE= sondas
+#    ports:
+#      - 3308:3308
 
 
   explorando-app:
@@ -19,6 +19,8 @@ services:
     ports:
       - 8080:8080
     environment:
-      WAIT_HOSTS: mysqldb:3306
-    depends_on:
-      - mysqldb
+      - DATABASE_HOST=mysqldb
+      - DATABASE_USER=myapp-user
+      - DATABASE_PASSWORD=rootdockerdb
+      - DATABASE_NAME=sondas
+      - DATABASE_PORT=3308

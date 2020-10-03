@@ -34,16 +34,16 @@
         body {
             color: #333;
         }
-        .container-fluid {
+        .containernav {
             height: 60px;
             width: 100%;
-            font-size: 30px;
-            font-weight: bold;
-            background-color:#17007f;
-            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+            background-color:#17007f;
+            color: white
         }
         th, tr, thead, tbody, td {
             justify-content: center;
@@ -106,7 +106,7 @@
             }
         }
         a{
-            color:#F66947;
+            color:#fd4755;
             text-decoration: none;
         }
     </style>
@@ -116,13 +116,54 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </head>
 <body style="background: black;">
+<section>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bem-vindxs a Missao vai Começar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Aqui na Nasa é comum o envio de Sondas semanalmente para Marte para conseguirmos imagens atualizadas desse planeta.
+                    <br>
+                    Para isso essa sonda precisa de um nome para rastrearmos, coordenadas da onde iria pousar(x,y) a direção(W,N,E,S) e
+                    as instrucoes para que ela ande pela superficie.
+                    <br>
+                    Assim as imagens retornam para Nasa juntamente com as posiçōes finais
+                    após exploração da superfície.
+                </div>
+                <div class="modal-footer" style="display:flex; justify-content: center; align-items: center">
+                    <button type="button" class="btn" style="background-color: #fd4755; color: #ffffff; display:flex; justify-content: center; align-items: center" data-dismiss="modal">Vamos Lá!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <!--/*@thymesVar id="sondas" type="java.util.List"*/-->
 <!--/*@thymesVar id="sonda" type="com.viborotto.explorandomarte.model.Sonda"*/-->
-    <div class="container-fluid">
+    <div class="containernav">
         <nav class="navbar">
             <span class="navbar-brand mb-0 h1 ">Explorando Marte</span>
         </nav>
     </div>
+
+    <div class="container-fluid" style="height: 60px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn"  style="background-color: #fd4755; color: #ffffff; justify-content: center" data-toggle="modal" data-target="#exampleModal">
+        Comece aqui!
+    </button>
+
+    </div>
+
+
 
     <div class="container" style="margin-top: 20px;background: white; padding: 0;border-radius: 10px">
         <table class="table">
@@ -146,7 +187,7 @@
                 <td th:text="${sonda.direcao}"></td>
                 <td th:text="${sonda.instrucoes}"></td>
                 <td>
-                    <a th:href="@{/deleteSonda/{id}(id=${sonda.id})}" class="btn btn-ligth" style="background-color: #ff4329; color: white; font-weight: lighter;">Retornar pra Terra</a>
+                    <a th:href="@{/deleteSonda/{id}(id=${sonda.id})}" class="btn btn-ligth" style="background-color: #fd4755; color: white; font-weight: lighter;">Retornar pra Terra</a>
                 </td>
             </tr>
             </tbody>
@@ -316,6 +357,6 @@
         </svg>
     </div>
 </div>
-
+</section>
 </body>
 </html>

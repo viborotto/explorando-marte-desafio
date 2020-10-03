@@ -16,6 +16,8 @@ public class Sonda {
     @NotNull
     private String nome;
 
+    private String tamanhoSuperficie;
+
     @NotNull
     @Column(name = "COORDENADAX")
     private Integer coordenadaX;
@@ -34,15 +36,22 @@ public class Sonda {
 //    @JsonIgnore
 //    private String descricao;
 
+
+    public Sonda(Long id, String nome, String tamanhoSuperficie, Integer coordenadaX, Integer coordenadaY, String direcao, String instrucoes) {
+        this.id = id;
+        this.nome = nome;
+        this.tamanhoSuperficie = tamanhoSuperficie;
+        this.coordenadaX = coordenadaX;
+        this.coordenadaY = coordenadaY;
+        this.direcao = direcao;
+        this.instrucoes = instrucoes;
+    }
+
     public Sonda() {
     }
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -83,5 +92,13 @@ public class Sonda {
 
     public void setInstrucoes(String instrucoes) {
         this.instrucoes = instrucoes;
+    }
+
+    public String getTamanhoSuperficie() {
+        return tamanhoSuperficie;
+    }
+
+    public void setTamanhoSuperficie(String tamanhoSuperficie) {
+        this.tamanhoSuperficie = tamanhoSuperficie;
     }
 }

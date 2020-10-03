@@ -51,6 +51,7 @@ endereco para acessar front: localhost:8080/api/v1/sondas
 ```json
 {
     "nome": "sonda_nasa",
+    "tamanho"
     "coordenadaX": 1,
     "coordenadaY": 2,
     "direcao": "N",

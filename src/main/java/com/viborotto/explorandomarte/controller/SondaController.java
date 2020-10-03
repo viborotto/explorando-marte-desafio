@@ -20,10 +20,8 @@ public class SondaController {
     @Autowired
     private SondaService sondaService;
 
-    //todo DTO? descricao da sonda ao retornar o objeto no post e na listagem
-    //demais retornos da api
-    //TODO redirect to listarSondas
-
+    //TODO demais retornos da api e Exceptions
+    //TODO arrumar redirect Thymeleaf
     /**
      * Endpoints MVC - integrados com Thymeleaf
      * Tendo em vista padrao REST em seus 3 niveis, essa aplicacao esta no nivel 2 REST
@@ -74,6 +72,12 @@ public class SondaController {
     @GetMapping("/sondas")
     public ResponseEntity<?> listarSondaPostman(){
         return ResponseEntity.status(HttpStatus.OK).body(sondaService.listarSondas());
+    }
+
+    @ApiOperation(value = "POSTMAN - Listar sondas em Marte" )
+    @GetMapping("/sondas/{id}")
+    public ResponseEntity<?> listarSondaPostman(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(sondaService.getSonda(id));
     }
 
     @ApiOperation(value = "POSTMAN - Retornar sonda para Terra" )

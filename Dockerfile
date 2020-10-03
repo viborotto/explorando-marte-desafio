@@ -1,6 +1,6 @@
-FROM openjdk:8-jdk-alpine
-RUN addgroup -S devdocker && adduser -S vittoria -G devdocker
-USER vittoria:devdocker
+FROM openjdk:11
+#RUN addgroup -S devdocker && adduser -S vittoria -G devdocker
+#USER vittoria:devdocker
 
 ARG JAR_FILE=target/*.jar
 VOLUME /tmp

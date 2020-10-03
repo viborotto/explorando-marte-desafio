@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SondaServiceImpl implements SondaService{
@@ -42,9 +43,16 @@ public class SondaServiceImpl implements SondaService{
     }
 
     @Override
+    public Sonda getSonda(Long id) {
+        Optional<Sonda> optionalSonda = sondaRepository.findById(id);
+        return optionalSonda.get();
+    }
+
+    @Override
     public List<Sonda> listarSondas() {
         return (List<Sonda>) sondaRepository.findAll();
     }
+
     @Override
     public void deletarSonda(Long id) {
         this.sondaRepository.deleteById(id);
@@ -109,7 +117,5 @@ public class SondaServiceImpl implements SondaService{
             sonda.setCoordenadaX(sonda.getCoordenadaX()+1);
         }
     }
-
-
 
 }
