@@ -1,6 +1,5 @@
-package com.viborotto.explorandomarte.controller;
+package com.viborotto.explorandomarte.exception;
 
-import com.viborotto.explorandomarte.exception.LimiteUltrapassadoException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

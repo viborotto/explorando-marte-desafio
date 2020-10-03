@@ -30,7 +30,7 @@ public class SondaController {
     public String saveSonda(@ModelAttribute("sonda") Sonda sonda) {
         // save employee to database
         sondaService.criarSonda(sonda);
-        return "index";
+        return "returnIndex";
     }
 
     @ApiOperation(value = "Listar sondas em Marte" )
@@ -52,7 +52,7 @@ public class SondaController {
 
         // call delete employee method
         this.sondaService.deletarSonda(id);
-        return "index";
+        return "returnIndex";
     }
 
 
