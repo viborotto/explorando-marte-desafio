@@ -48,7 +48,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.11</version>
+            <version>5.1.47</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -91,14 +91,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!-- fabric8 to integrate maven with docker -->
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>dockerfile-maven-plugin</artifactId>
-                <configuration>
-                    <repository>viborotto/${project.artifactId}</repository>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>com.spotify</groupId>-->
+<!--                <artifactId>dockerfile-maven-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <repository>viborotto/${project.artifactId}</repository>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
     </build>
 

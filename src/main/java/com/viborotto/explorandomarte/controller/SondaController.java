@@ -20,8 +20,6 @@ public class SondaController {
     @Autowired
     private SondaService sondaService;
 
-    //TODO demais retornos da api e Exceptions
-    //TODO arrumar redirect Thymeleaf
     /**
      * Endpoints MVC - integrados com Thymeleaf
      * Tendo em vista padrao REST em seus 3 niveis, essa aplicacao esta no nivel 2 REST
@@ -32,7 +30,7 @@ public class SondaController {
     public String saveSonda(@ModelAttribute("sonda") Sonda sonda) {
         // save employee to database
         sondaService.criarSonda(sonda);
-        return "redirect:/api/v1/sondas";
+        return "index";
     }
 
     @ApiOperation(value = "Listar sondas em Marte" )
@@ -54,7 +52,7 @@ public class SondaController {
 
         // call delete employee method
         this.sondaService.deletarSonda(id);
-        return "redirect:/api/v1/sondas";
+        return "index";
     }
 
 
@@ -64,7 +62,7 @@ public class SondaController {
      */
     @ApiOperation(value = "POSTMAN - Criar uma Sonda e enviar pra Marte" )
     @PostMapping("/salvarSonda")
-    public ResponseEntity salvarSondaPostman(@RequestBody Sonda sonda) {
+    public ResponseEntity salvarSondaPostman(@RequestBody Sonda sonda){
         return ResponseEntity.status(HttpStatus.CREATED).body(sondaService.criarSonda(sonda));
     }
 

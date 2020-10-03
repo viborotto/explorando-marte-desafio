@@ -1,5 +1,6 @@
 package com.viborotto.explorandomarte.service;
 
+import com.viborotto.explorandomarte.exception.LimiteUltrapassadoException;
 import com.viborotto.explorandomarte.model.Sonda;
 import com.viborotto.explorandomarte.repository.SondaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,7 @@ public class SondaServiceImpl implements SondaService{
     private SondaRepository sondaRepository;
 
     @Override
-    public Sonda criarSonda(Sonda sonda) {
-
-//        for (int i = 1; i <= quantidadeDeSondasParaEnvio; i++){
-
+    public Sonda criarSonda(Sonda sonda) throws RuntimeException{
 
             for (int j = 0; j < sonda.getInstrucoes().length(); j++){
                 String step = sonda.getInstrucoes().substring(j,j+1);
@@ -34,12 +32,11 @@ public class SondaServiceImpl implements SondaService{
 
                 }
             }
-
-            System.out.println("Exploracao finalizada da sonda "+ sonda.getNome() + " em ("+ sonda.getCoordenadaX() + "," + sonda.getCoordenadaY() + "), direcao " + sonda.getDirecao());
-
-//        }
-
-        return sondaRepository.save(sonda);
+            if(!(sonda.getCoordenadaX()>sonda.getTamanhoSuperficieX()||sonda.getCoordenadaY()>sonda.getTamanhoSuperficieY())){
+                System.out.println("Exploracao finalizada da sonda " + sonda.getNome() + " em (" + sonda.getCoordenadaX() + "," + sonda.getCoordenadaY() + "), direcao " + sonda.getDirecao());
+                return sondaRepository.save(sonda);
+            }
+            throw new LimiteUltrapassadoException();
     }
 
     @Override

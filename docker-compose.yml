@@ -1,26 +1,26 @@
 version: '3.1'
 
 services:
-#  mysqldb:
-#    restart: always
-#    container_name: mysqldb
-#    image: mysql:5.6
-#    environment:
-#      - MYSQL_ROOT_PASSWORD= rootdockerdb
-#      - MYSQL_USER= root
-#      - MYSQL_DATABASE= sondas
-#    ports:
-#      - 3308:3308
+  mysqldb:
+    restart: always
+    container_name: mysqldb
+    image: mysql:5.6
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootdockerdb
+      - MYSQL_USER=root
+      - MYSQL_DATABASE=sondas
+    ports:
+      - "3308:3308"
 
 
   explorando-app:
-    restart: on-failure
     build: ./
     ports:
-      - 8080:8080
+      - "8080:8080"
+    depends_on:
+      - mysqldb
     environment:
-      - DATABASE_HOST=mysqldb
-      - DATABASE_USER=myapp-user
-      - DATABASE_PASSWORD=rootdockerdb
-      - DATABASE_NAME=sondas
-      - DATABASE_PORT=3308
+      SPRING_DATASOURCE_USERNAME: callicoder
+      SPRING_DATASOURCE_PASSWORD: callicoder
+      SPRING_PROFILES_ACTIVE: mysql-docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3308/sondas?autoReconnect=true&useSSL=false

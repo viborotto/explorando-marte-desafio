@@ -4,6 +4,10 @@ public class Sonda {
 
     private String nome;
 
+    private Integer tamanhoSuperficieX;
+
+    private Integer tamanhoSuperficieY;
+
     private Integer coordenadaX;
 
     private Integer coordenadaY;
@@ -61,5 +65,21 @@ public class Sonda {
 
     public void setInstrucoes(String instrucoes) {
         this.instrucoes = instrucoes;
+    }
+
+    public Integer getTamanhoSuperficieX() {
+        return tamanhoSuperficieX;
+    }
+
+    public void setTamanhoSuperficieX(Integer tamanhoSuperficieX) {
+        this.tamanhoSuperficieX = tamanhoSuperficieX;
+    }
+
+    public Integer getTamanhoSuperficieY() {
+        return tamanhoSuperficieY;
+    }
+
+    public void setTamanhoSuperficieY(Integer tamanhoSuperficieY) {
+        this.tamanhoSuperficieY = tamanhoSuperficieY;
     }
 }

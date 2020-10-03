@@ -1,5 +1,7 @@
 package com.viborotto.explorandomarte.ViaConsole;
 
+import com.viborotto.explorandomarte.exception.LimiteUltrapassadoException;
+
 import java.util.Scanner;
 
 public class LabSonda {
@@ -24,6 +26,9 @@ public class LabSonda {
 
            System.out.print("Nome da sonda: ");
            sonda1.setNome(sc.next());
+           System.out.print("Tamanho da superficie a ser explorada: ");
+           sonda1.setTamanhoSuperficieX(sc.nextInt());
+           sonda1.setTamanhoSuperficieY(sc.nextInt());
            System.out.print("De as coordenadas X e Y da sonda, e a direcao: ");
            sonda1.setCoordenadaX(sc.nextInt());
            sonda1.setCoordenadaY(sc.nextInt());
@@ -89,7 +94,9 @@ public class LabSonda {
 
                }
            }
-
+           if(sonda1.getCoordenadaX()>sonda1.getTamanhoSuperficieX()||sonda1.getCoordenadaY()>sonda1.getTamanhoSuperficieY()){
+               throw new LimiteUltrapassadoException();
+           }
            System.out.println("Exploracao finalizada em ("+ sonda1.getCoordenadaX() + "," + sonda1.getCoordenadaY() + "), direcao " + sonda1.getDirecao());
 
         }

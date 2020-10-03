@@ -1,6 +1,5 @@
 package com.viborotto.explorandomarte.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -16,7 +15,9 @@ public class Sonda {
     @NotNull
     private String nome;
 
-    private String tamanhoSuperficie;
+    private Integer tamanhoSuperficieX;
+
+    private Integer tamanhoSuperficieY;
 
     @NotNull
     @Column(name = "COORDENADAX")
@@ -30,17 +31,14 @@ public class Sonda {
     private String direcao;
 
     @NotNull
-    @JsonIgnore
     private String instrucoes;
 
-//    @JsonIgnore
-//    private String descricao;
 
-
-    public Sonda(Long id, String nome, String tamanhoSuperficie, Integer coordenadaX, Integer coordenadaY, String direcao, String instrucoes) {
+    public Sonda(Long id, String nome, Integer tamanhoSuperficieX, Integer tamanhoSuperficieY, Integer coordenadaX, Integer coordenadaY, String direcao, String instrucoes) {
         this.id = id;
         this.nome = nome;
-        this.tamanhoSuperficie = tamanhoSuperficie;
+        this.tamanhoSuperficieX = tamanhoSuperficieX;
+        this.tamanhoSuperficieY = tamanhoSuperficieY;
         this.coordenadaX = coordenadaX;
         this.coordenadaY = coordenadaY;
         this.direcao = direcao;
@@ -94,11 +92,19 @@ public class Sonda {
         this.instrucoes = instrucoes;
     }
 
-    public String getTamanhoSuperficie() {
-        return tamanhoSuperficie;
+    public Integer getTamanhoSuperficieX() {
+        return tamanhoSuperficieX;
     }
 
-    public void setTamanhoSuperficie(String tamanhoSuperficie) {
-        this.tamanhoSuperficie = tamanhoSuperficie;
+    public void setTamanhoSuperficieX(Integer tamanhoSuperficieX) {
+        this.tamanhoSuperficieX = tamanhoSuperficieX;
+    }
+
+    public Integer getTamanhoSuperficieY() {
+        return tamanhoSuperficieY;
+    }
+
+    public void setTamanhoSuperficieY(Integer tamanhoSuperficieY) {
+        this.tamanhoSuperficieY = tamanhoSuperficieY;
     }
 }

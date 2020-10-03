@@ -206,22 +206,36 @@
             </div>
             <div class="form-row">
                 <div class="col-md-6 mb-3">
-                    <label for="validationCustom03">Coordenada X</label>
-                    <input th:field="*{coordenadaX}" type="text" class="form-control" id="validationCustom03" placeholder="Coordenada X de chegada em Marte" required>
+                    <label for="validationCustom03">Dimensão X da Superficie</label>
+                    <input th:field="*{tamanhoSuperficieX}" type="text" class="form-control" id="validationCustom02" placeholder="Dimensão X da Superficie de Marte" required>
                     <div class="invalid-feedback">
-                        Please provide a valid city.
+                        Por favor valide a coordenada X
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">Dimensão Y da Superficie</label>
+                    <input th:field="*{tamanhoSuperficieY}" type="text" class="form-control" id="validationCustom03" placeholder="Dimensão X da Superficie de Marte" required>
+                    <div class="invalid-feedback">
+                        Por favor valide a coordenada Y
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom03">Coordenada X</label>
+                    <input th:field="*{coordenadaX}" type="text" class="form-control" id="validationCustom04" placeholder="Coordenada X de chegada em Marte" required>
+                    <div class="invalid-feedback">
+                        Por favor valide a coordenada X
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="validationCustom03">Coordenada Y</label>
-                    <input th:field="*{coordenadaY}" type="text" class="form-control" id="validationCustom04" placeholder="Coordenada Y de chegada em Marte" required>
+                    <input th:field="*{coordenadaY}" type="text" class="form-control" id="validationCustom05" placeholder="Coordenada Y de chegada em Marte" required>
                     <div class="invalid-feedback">
                         Por favor valide a coordenada Y
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="validationCustom04">Direção Inicial da Sonda</label>
-                    <select class="custom-select" id="validationCustom05" th:field="*{direcao}" required>
+                    <select class="custom-select" id="validationCustom06" th:field="*{direcao}" required>
                         <option selected disabled value="">Escolha a Direcao...</option>
                         <option value="W">W</option>
                         <option value="N">N</option>
@@ -234,7 +248,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="validationCustom05">Instruçōes para a Sonda Explorar Marte</label>
-                    <input type="text" th:field="*{instrucoes}" class="form-control" id="validationCustom06" required>
+                    <input type="text" th:field="*{instrucoes}" class="form-control" id="validationCustom07" required>
                     <div class="invalid-feedback">
                         Por favor valide a instrução
                     </div>

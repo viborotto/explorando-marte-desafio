@@ -4,13 +4,15 @@ Desafio em que a API cria Sondas para marte com suas coordenadas e movimentos
 ## Tecnologias utilizadas
    
    - Java 11
-   - Spring Boot | Spring Data JPA |
-   - Profiles: MySQL ou H2
+   - Spring Boot | Spring Data JPA
+   - Profiles: MySQL ou H2 ou Docker-mysql
    - Thymeleaf
    - Documentado com Swagger: http://localhost:8080/swagger-ui.html
    - Docker
    - (Testes)
    - Nivel 2 de maturidade REST
+   - Spring
+   - JUnit
 
 ## Entendendo o Problema a ser Resolvido:
 
@@ -30,7 +32,18 @@ Nesta malha o ponto ao norte de (x,y) é sempre (x, y+1).
 Programa que processa uma série de instruções enviadas para as sondas que estão explorando este planalto.
 O formato da entrada e saída deste programa segue abaixo.
 
+1. Escolhendo Profile
+    - em application.properties spring.profiles.active=<h2,mysql,mysqldocker>
+    - rodando aplicacao via container, no terminal utilizar(necessario ja ter instalado docker na maquina), nesse caso utilizaremos o h2:
+    ```shell script
+    docker build -t explorando-marte-image:1.0 . && docker run -d -p 8080:8080 -e "SPRING_PROFILES_ACTIVE=h2" --name container-explorando-marte explorando-marte-image:1.0
+    ```
+   - utilizando docker-compose com profile mysql-docker(EM CONSTRUÇÃO)
+   ```shell script
+   docker-compose up
+   ```
 ## Servico Via FrontEnd - Thymeleaf
+localhost:8080/api/v1/sondas
 [gif]
 
     
@@ -51,7 +64,8 @@ endereco para acessar front: localhost:8080/api/v1/sondas
 ```json
 {
     "nome": "sonda_nasa",
-    "tamanho"
+    "tamanhoSuperficieX": 5,
+    "tamanhoSuperficieY": 5,
     "coordenadaX": 1,
     "coordenadaY": 2,
     "direcao": "N",
